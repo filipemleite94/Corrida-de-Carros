@@ -1,3 +1,14 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
 /* Classe usando Thread que simula a corrida de um carro */
 class CarroCorrendoThread implements Runnable {
 
@@ -10,9 +21,10 @@ class CarroCorrendoThread implements Runnable {
 	final static int PULO_MAXIMO = 50; // pulo máximo em cm que um carro pode dar
 	char id;
 	boolean emJogo;
+	Main main;
 	
 	/** Construtor da classe. Parâmtros : Nome do Carro e Distância da Corrida */
-	public CarroCorrendoThread (String nome, int distanciaTotalCorrida, int i) {
+	public CarroCorrendoThread (String nome, int distanciaTotalCorrida, int i, Main main) {
 		/* chamando o construtor de Thread passando o nome do carro como parâmetro */
 		this.nome=nome;
 		this.distanciaTotalCorrida = distanciaTotalCorrida;
