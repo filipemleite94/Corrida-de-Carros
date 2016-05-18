@@ -26,24 +26,45 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	int colocacao=0, player1=0, player2=0, player3=0, player4=0;
 	boolean emJogo=true;
 	private Image player1icon, player2icon, player3icon, player4icon;
+	private Image l1ugar, l2ugar, l3ugar, l4ugar;
+	private Image fundo, endgame;
 
 	public Main() {
 		t.start();
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
-		ImageIcon referencia = new ImageIcon(Main.class.getResource("Link.png"));
-		player1icon=player2icon=player3icon=player4icon=referencia.getImage();;
+		ImageIcon referencia = new ImageIcon(Main.class.getResource("Mario.png"));
+		player1icon=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("Luigi.png"));
+		player1icon=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("Megaman.png"));
+		player1icon=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("Pikachu.png"));
+		player1icon=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("/fundo.jpg"));
+		fundo = referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("/endgame.jpg"));
+		endgame = referencia.getImage();
 	}
 	
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
-
+		
 		if (emJogo) {
+			graficos.drawImage(fundo, 0, 0, this);
 			graficos.drawImage(player1icon, x, y, this);
 			graficos.drawImage(player2icon, xa, ya, this);
 			graficos.drawImage(player3icon, xb, yb, this);
 			graficos.drawImage(player4icon, xc, yc, this);
+		}
+		
+		else {
+			graficos.drawImage(endgame, 0, 0, this);
+			graficos.drawImage(l1ugar, x, y, this);
+			graficos.drawImage(l2ugar, xa, ya, this);
+			graficos.drawImage(l3ugar, xb, yb, this);
+			graficos.drawImage(l4ugar, xc, yc, this);
 		}
 	}
 	
@@ -89,6 +110,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	public void endgame(){
+		
 		//botar resultados colocacao = player e tela de fim de jogo;
 		//pssivel reiniciarjogo
 	}
@@ -107,6 +129,17 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		}
 		if (code == KeyEvent.VK_RIGHT) {
 			xc += 20;
+		}
+		if (code == KeyEvent.VK_ENTER) {
+			x=0;
+			xa=0;
+			xb=0;
+			xc=0;
+			emJogo=true;	
+			player1=0;
+			player2=0;
+			player3=0;
+			player4=0;
 		}
 	}
 
