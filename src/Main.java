@@ -82,7 +82,12 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	public void endgame(){
+		int i, j;
 		emJogo=false;
+			for(i=0; i<4; i++){
+				for(j=0; j<4; j++){
+				}
+			}
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -101,7 +106,6 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 			x[3] += velx[3];
 		}
 		if ((code == KeyEvent.VK_ENTER)&&!emJogo) {
-			System.out.println(colocacao);
 			for(cont=0; cont<4; cont++){
 				x[cont]=0;
 				player[cont]=0;
