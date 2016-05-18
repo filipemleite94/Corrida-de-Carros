@@ -30,7 +30,6 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
-<<<<<<< HEAD
 		for(cont=0; cont<4; cont++){
 			y[cont]=50+cont*200;
 			x[cont]=0;
@@ -44,16 +43,6 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		playericon[2]=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Pikachu.png"));
 		playericon[3]=referencia.getImage();
-=======
-		ImageIcon referencia = new ImageIcon(Main.class.getResource("Kirby.png"));
-		player1icon=referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("Luigi.png"));
-		player2icon=referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("Megaman.png"));
-		player3icon=referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("Pikachu.png"));
-		player4icon=referencia.getImage();
->>>>>>> 09506e30e8dafb064f54bfb7c0129a99a56c2630
 		referencia = new ImageIcon(Main.class.getResource("fundo.jpg"));
 		fundo = referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("endgame.jpg"));
