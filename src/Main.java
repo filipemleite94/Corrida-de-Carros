@@ -45,7 +45,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		playericon[3]=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("fundo.jpg"));
 		fundo = referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("endgame.jpg"));
+		referencia = new ImageIcon(Main.class.getResource("Endgame.jpg"));
 		endgame = referencia.getImage();
 	}
 	
