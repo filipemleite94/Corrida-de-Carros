@@ -76,7 +76,6 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 				colocacao++;
 				player[cont]=colocacao;
 			}
-			if(player[cont]==0) x[cont] += velx[cont];
 		}
 		repaint();
 		if(colocacao>4) this.endgame();
