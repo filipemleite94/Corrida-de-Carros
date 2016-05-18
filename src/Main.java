@@ -15,18 +15,14 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	
 	private static final long serialVersionUID = 1L;
 	Timer t = new Timer(5, this);
-	public int x = 0, y = 50;
-	public static int velx = 0;
-	public int xa = 0, ya = 250;
-	public static int velxa = 0;
-	public int xb = 0, yb = 450;
-	public static int velxb = 0;
-	public int xc = 0, yc = 650;
-	public static int velxc = 0;
-	int colocacao=0, player1=0, player2=0, player3=0, player4=0;
+	public int[] x = new int[4];
+	int y[] = new int[4];
+	public static int[] velx = new int[4];
+	int colocacao = 0, cont = 0;
+	int[] player = new int[4];
 	boolean emJogo=true;
-	private Image player1icon, player2icon, player3icon, player4icon;
-	private Image l1ugar, l2ugar, l3ugar, l4ugar;
+	private Image[] playericon = new Image[4];
+	private Image[] lugar = new Image[4];
 	private Image fundo, endgame;
 
 	public Main() {
@@ -34,17 +30,22 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
-		ImageIcon referencia = new ImageIcon(Main.class.getResource("Mario.png"));
-		player1icon=referencia.getImage();
+		for(cont=0; cont<4; cont++){
+			y[cont]=50+cont*200;
+			x[cont]=0;
+			velx[cont]=20;
+		}
+		ImageIcon referencia = new ImageIcon(Main.class.getResource("Kirby.png"));
+		playericon[0]=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Luigi.png"));
-		player1icon=referencia.getImage();
+		playericon[1]=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Megaman.png"));
-		player1icon=referencia.getImage();
+		playericon[2]=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Pikachu.png"));
-		player1icon=referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("/fundo.jpg"));
+		playericon[3]=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("fundo.jpg"));
 		fundo = referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("/endgame.jpg"));
+		referencia = new ImageIcon(Main.class.getResource("endgame.jpg"));
 		endgame = referencia.getImage();
 	}
 	
@@ -53,93 +54,59 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		
 		if (emJogo) {
 			graficos.drawImage(fundo, 0, 0, this);
-			graficos.drawImage(player1icon, x, y, this);
-			graficos.drawImage(player2icon, xa, ya, this);
-			graficos.drawImage(player3icon, xb, yb, this);
-			graficos.drawImage(player4icon, xc, yc, this);
+			for(cont=0; cont<4; cont++){
+				graficos.drawImage(playericon[cont], x[cont], y[cont], this);
+			}
 		}
 		
 		else {
 			graficos.drawImage(endgame, 0, 0, this);
-			graficos.drawImage(l1ugar, x, y, this);
-			graficos.drawImage(l2ugar, xa, ya, this);
-			graficos.drawImage(l3ugar, xb, yb, this);
-			graficos.drawImage(l4ugar, xc, yc, this);
+			for(cont=0; cont<4; cont++){
+				graficos.drawImage(lugar[cont], x[cont], y[cont], this);
+			}
+
 		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-
-		if (x > 1130) {
-			velx = 0;
-			x = 1130;
-			colocacao++;
-			player1=colocacao;
+		for(cont=0; cont<4; cont++){
+			if (x[cont] > 1130) {
+				velx[cont] = 0;
+				x[cont] = 1130;
+				colocacao++;
+				player[cont]=colocacao;
+			}
+			if(player[cont]==0) x[cont] += velx[cont];
 		}
-
-		if(player1==0) x += velx;
-
-		if (xa > 1130) {
-			velxa = 0;
-			xa = 1130;
-			colocacao++;
-			player2=colocacao;
-		}
-		
-		if(player2==0) xa += velxa;
-		
-		if (xb > 1130) {
-			velxb = 0;
-			xb = 1130;
-			colocacao++;
-			player3=colocacao;
-		}
-		
-		if(player3==0)xb += velxb;
-		
-		if (xc > 1130) {
-			velxc = 0;
-			xc = 1130;
-			colocacao++;
-			player4=colocacao;
-		}
-		
-		if(player4==0)xc += velxc;
 		repaint();
 		if(colocacao>4) this.endgame();
 	}
 	
 	public void endgame(){
 		
-		//botar resultados colocacao = player e tela de fim de jogo;
-		//pssivel reiniciarjogo
 	}
 	
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 		if (code == KeyEvent.VK_Q) {
-			x += 20;
+			x[0] += velx[0];
 		}
 	
 		if (code == KeyEvent.VK_F) {
-			xa += 20;
+			x[1] += velx[1];
 		}
 		if (code == KeyEvent.VK_M) {
-			xb += 20;
+			x[2] += velx[2];
 		}
 		if (code == KeyEvent.VK_RIGHT) {
-			xc += 20;
+			x[3] += velx[3];
 		}
-		if (code == KeyEvent.VK_ENTER) {
-			x=0;
-			xa=0;
-			xb=0;
-			xc=0;
+		if ((code == KeyEvent.VK_ENTER)&&emJogo==false) {
+			for(cont=0; cont<4; cont++){
+				x[cont]=0;
+				player[cont]=0;
+			}
 			emJogo=true;	
-			player1=0;
-			player2=0;
-			player3=0;
-			player4=0;
 		}
 	}
 
