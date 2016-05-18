@@ -31,7 +31,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
 		for(cont=0; cont<4; cont++){
-			y[cont]=50+cont*200;
+			y[cont]=25+cont*200;
 			x[cont]=0;
 			velx[cont]=20;
 		}
@@ -71,18 +71,18 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e) {
 		for(cont=0; cont<4; cont++){
 			if (x[cont] > 1130) {
-				velx[cont] = 0;
+				velx[cont]=0;
 				x[cont] = 1130;
 				colocacao++;
 				player[cont]=colocacao;
 			}
 		}
 		repaint();
-		if(colocacao>4) this.endgame();
+		if(colocacao>=4) this.endgame();
 	}
 	
 	public void endgame(){
-		
+		emJogo=false;
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -100,11 +100,14 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		if (code == KeyEvent.VK_RIGHT) {
 			x[3] += velx[3];
 		}
-		if ((code == KeyEvent.VK_ENTER)&&emJogo==false) {
+		if ((code == KeyEvent.VK_ENTER)&&!emJogo) {
+			System.out.println(colocacao);
 			for(cont=0; cont<4; cont++){
 				x[cont]=0;
 				player[cont]=0;
+				velx[cont]=20;
 			}
+			colocacao=0;
 			emJogo=true;	
 		}
 	}
@@ -120,7 +123,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		Main s = new Main();
 		f.add(s);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(1200,750);
+		f.setSize(1200,725);
 		f.setVisible(true);
 	}
 }
