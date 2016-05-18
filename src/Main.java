@@ -62,7 +62,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		else {
 			graficos.drawImage(endgame, 0, 0, this);
 			for(cont=0; cont<4; cont++){
-				graficos.drawImage(lugar[cont], x[cont], y[cont], this);
+				graficos.drawImage(lugar[cont], 0, y[cont], this);
 			}
 
 		}
@@ -86,6 +86,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		emJogo=false;
 			for(i=0; i<4; i++){
 				for(j=0; j<4; j++){
+					if(i==(player[j]-1)) lugar[i]=playericon[j];
 				}
 			}
 	}
