@@ -26,7 +26,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	public int velyb = 0;
 	public int ib=0;
 	public int jb=0;
-
+	
 	public Main() {
 		t.start();
 		addKeyListener(this);
@@ -105,12 +105,12 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		}
 		if (code == KeyEvent.VK_LEFT) {
 			vely = 0;
-			velx -= -j/5;
+			x -= 20;
 			j--;
 		}
 		if (code == KeyEvent.VK_RIGHT) {
 			vely = 0;
-			velx += i/5;
+			x += 20;
 			i++;
 		}
 		
@@ -124,12 +124,12 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		}
 		if (code == KeyEvent.VK_A) {
 			velyb = 0;
-			velxb -= -jb/5;
+			xb -= 20;
 			jb--;
 		}
 		if (code == KeyEvent.VK_D) {
 			velyb = 0;
-			velxb += ib/5;
+			xb += 20;
 			ib++;
 		}
 		
@@ -143,7 +143,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 
 	
 	final static int NUM_CARROS = 2; // QTE. de sapos na corrida
-	final static int DISTANCIA = 500; // Dist�ncia da corrida em cm
+	final static int DISTANCIA = 1200; // Dist�ncia da corrida em cm
 
 	public static void main(String[] args) {
 
@@ -158,10 +158,6 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		for (int i = 1; i <= NUM_CARROS; i++) {
 			CarroCorrendoThread c = new CarroCorrendoThread("CARRO_" + i, DISTANCIA, i, s);
 			new Thread(c).start();
-			
-			if(i==0)velx=10*(int)c.id;
-			else velxb=10*(int)c.id;
 		}
 	}
-
 }

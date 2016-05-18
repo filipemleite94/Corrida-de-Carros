@@ -17,6 +17,7 @@ class CarroCorrendoThread implements Runnable {
 	int distanciaTotalCorrida;	// distância a ser corrida pelo carro
 	int pulo = 0;					// pulo do carro em cm
 	int pulos = 0;					// quantidades de pulos dados na corrida
+	int i, cont;
 	static int colocacao = 0;		// colocação do carro ao final da corrida
 	final static int PULO_MAXIMO = 50; // pulo máximo em cm que um carro pode dar
 	char id;
@@ -29,6 +30,8 @@ class CarroCorrendoThread implements Runnable {
 		this.nome=nome;
 		this.distanciaTotalCorrida = distanciaTotalCorrida;
 		this.nome = nome;
+		this.main=main;
+		this.i=i;
 		if(i==1) id='q';
 		if(i==2) id='f';
 		if(i==3) id='u';
@@ -55,6 +58,7 @@ class CarroCorrendoThread implements Runnable {
 	public void run () {
 		while (distanciaCorrida < distanciaTotalCorrida) {
 			carroPulando();
+			
 		}
 		colocacaoCarro();
 	}
