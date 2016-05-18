@@ -163,6 +163,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
 		Main s = new Main();
+		Sound.sound1.loop();
 		f.add(s);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(1200, 725);
