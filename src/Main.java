@@ -34,17 +34,17 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
-		ImageIcon referencia = new ImageIcon(Main.class.getResource("Mario.png"));
+		ImageIcon referencia = new ImageIcon(Main.class.getResource("Kirby.png"));
 		player1icon=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Luigi.png"));
-		player1icon=referencia.getImage();
+		player2icon=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Megaman.png"));
-		player1icon=referencia.getImage();
+		player3icon=referencia.getImage();
 		referencia = new ImageIcon(Main.class.getResource("Pikachu.png"));
-		player1icon=referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("/fundo.jpg"));
+		player4icon=referencia.getImage();
+		referencia = new ImageIcon(Main.class.getResource("fundo.jpg"));
 		fundo = referencia.getImage();
-		referencia = new ImageIcon(Main.class.getResource("/endgame.jpg"));
+		referencia = new ImageIcon(Main.class.getResource("endgame.jpg"));
 		endgame = referencia.getImage();
 	}
 	
