@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -57,7 +59,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
-
+		
 		if (conttempo > 900) {
 			if (emJogo) {
 				graficos.drawImage(fundo, 0, 0, this);
@@ -69,8 +71,18 @@ public class Main extends JPanel implements ActionListener, KeyListener {
 			else {
 				graficos.drawImage(endgame, 0, 0, this);
 				for (cont = 0; cont < 4; cont++) {
-					graficos.drawImage(lugar[cont], 0, y[cont], this);
+					if(cont<2)
+						graficos.drawImage(lugar[cont], 150, y[cont+2], this);
+					else
+						graficos.drawImage(lugar[cont], 750, y[cont], this);
 				}
+				
+				graficos.setColor(Color.GREEN);
+				graficos.setFont(new Font( "SansSerif", Font.BOLD, 45 ));
+				graficos.drawString("1º colocado", 220 , 475 );
+				graficos.drawString("2º colocado", 220 , 675);
+				graficos.drawString("3º colocado", 820 , 475);
+				graficos.drawString("4º colocado", 820 , 675);
 			}
 		} else {
 			if (conttempo < 300)
